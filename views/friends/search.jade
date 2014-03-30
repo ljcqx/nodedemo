@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  script(type='text/javascript', src='/js/script.js')
+  form#search-box.container(role='form')
+    .form-group
+      label(for='name') 搜索好友
+      input.form-control#textinput(type='text', name='name', required='')
+    .form-group
+      label(for='btn-search')
+      input.form-control#btn-search(type='button', name='btn-search', value='搜索')
+    .list-group
+      .list-group-item#item-user
+
+
+
+
+
+
+
+

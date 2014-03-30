@@ -1,0 +1,221 @@
+响应式图片
+通过添加.img-responsive class可以让Bootstrap 3中的图片对响应式布局的支持更友好。其实质是为图片赋予了max-width: 100%; 和height: auto;属性，可以让图片按比例缩放，不超过其父元素的尺寸。
+<img src="..." class="img-responsive" alt="Responsive image">
+
+Containers
+用.container包裹页面上的内容即可实现居中对齐。在不同的媒体查询阈值范围内都为container设置了width，用以匹配栅格系统。
+注意，由于设置了padding 和 固定宽度，.container不能嵌套。
+<div class="container">
+  ...
+</div>
+
+Bootstrap内置了一套响应式、移动设备优先的流式栅格系统，随着屏幕设备或视口（viewport）尺寸的增加，系统会自动分为最多12列
+col-md-1 到 col-md-12
+案例：从堆叠到水平排列
+<div class="row">
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+</div>
+<div class="row">
+  <div class="col-md-8">.col-md-8</div>
+  <div class="col-md-4">.col-md-4</div>
+</div>
+<div class="row">
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">.col-md-4</div>
+</div>
+<div class="row">
+  <div class="col-md-6">.col-md-6</div>
+  <div class="col-md-6">.col-md-6</div>
+</div>
+
+案例：移动设备和桌面
+是否不希望在小屏幕设备上所有列都堆叠在一起？那就使用针对超小屏幕和中等屏幕设备所定义的class吧，即.col-xs-*、.col-md-*。请看下面的案例。
+<!-- Stack the columns on mobile by making one full-width and the other half-width -->
+<div class="row">
+  <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+</div>
+
+<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+<div class="row">
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+</div>
+
+<!-- Columns are always 50% wide, on mobile and desktop -->
+<div class="row">
+  <div class="col-xs-6">.col-xs-6</div>
+  <div class="col-xs-6">.col-xs-6</div>
+</div>
+
+案例：手机、平板和桌面
+在上面案例的基础上，通过使用.col-sm-* classe我们来创建更加动态和强大的布局吧。
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <!-- Optional: clear the XS cols if their content doesn't match in height -->
+  <div class="clearfix visible-xs"></div>
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+</div>
+
+Responsive column resets
+即便有上面给出的四组栅格class，你也不免会碰到一些问题，例如，在某些阈值时，某些列可能会出现比别的列高的情况。为了克服这一问题，建议联合使用.clearfix和响应式工具classe。
+<div class="row">
+  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+
+  <!-- Add the extra clearfix for only the required viewport -->
+  <div class="clearfix visible-xs"></div>
+
+  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
+  <div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">.col-sm-5 .col-sm-offset-2 .col-md-6 .col-md-offset-0</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0">.col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0</div>
+</div>
+
+列偏移
+使用.col-md-offset-*可以将列偏移到右侧。这些class通过使用*选择器将所有列增加了列的左侧margin。例如，.col-md-offset-4将.col-md-4向右移动了4个列的宽度。
+<div class="row">
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+</div>
+<div class="row">
+  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+</div>
+
+嵌套列
+为了使用内置的栅格将内容嵌套，通过添加一个新的.row和一系列.col-md-*列到已经存在的.col-md-*列内即可实现。嵌套row所包含的列加起来应该等于12。
+<div class="row">
+  <div class="col-md-9">
+    Level 1: .col-md-9
+    <div class="row">
+      <div class="col-md-6">
+        Level 2: .col-md-6
+      </div>
+      <div class="col-md-6">
+        Level 2: .col-md-6
+      </div>
+    </div>
+  </div>
+</div>
+
+列排序
+通过使用.col-md-push-* 和 .col-md-pull-*就可以很容易的改变列的顺序。
+<div class="row">
+  <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
+  <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+</div>
+
+小号文本
+<small>This line of text is meant to be treated as fine print.</small>
+
+通过增加font-weight强调一段文本。
+<strong>rendered as bold text</strong>
+
+用斜体强调一段文本
+<em>rendered as italicized text</em>
+
+对齐class
+通过文本对齐class，可以简单方便的将文字重新对齐。
+<p class="text-left">Left aligned text.</p>
+<p class="text-center">Center aligned text.</p>
+<p class="text-right">Right aligned text.</p>
+
+强调class
+这些class通过颜色来表示强调。也可以应用于链接，当鼠标盘旋于链接上时，其颜色会变深，就像默认的链接样式。
+<p class="text-muted">...</p>
+<p class="text-primary">...</p>
+<p class="text-success">...</p>
+<p class="text-info">...</p>
+<p class="text-warning">...</p>
+<p class="text-danger">...</p>
+
+基本缩略语
+如想看完整的内容可把鼠标悬停在缩略语上, 但需要包含title属性。
+<abbr title="attribute">attr</abbr>
+为缩略语添加.initialism可以将其font-size设置的更小些。
+<abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
+
+引用
+在你的文档中引用其他来源的内容。
+默认样式的引用
+将任何HTML裹在<blockquote>之中即可表现为引用。对于直接引用，我们建议用<p>标签。
+<blockquote>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+</blockquote>
+引用选项
+对于标准样式的<blockquote>，可以通过几个简单的变体就能改变风格和内容。
+添加<small>标签或.small class 来注明引用来源(副标题)。来源名称可以放在<cite>标签里面
+<blockquote>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+</blockquote>
+另一种展示风格
+使用.pull-right可以让引用展现出向右侧移动、对齐的效果。
+<blockquote class="pull-right">
+  ...
+</blockquote>
+
+无序列表
+<ul>
+  <li>...</li>
+</ul>
+有序列表
+<ol>
+  <li>...</li>
+</ol>
+无样式列表
+移除了默认的list-style样式和左侧外边距的一组元素（只针对直接子元素）。这这是针对直接子元素，也就是说，你需要对所有嵌套的列表都添加此class才能具有同样的样式。
+<ul class="list-unstyled">
+  <li>...</li>
+</ul>
+
+内联列表
+通过设置display: inline-block;并添加少量的内补，将所有元素放置于同一列。
+<ul class="list-inline">
+  <li>...</li>
+</ul>
+带有描述的短语列表。
+<dl>
+  <dt>...</dt>
+  <dd>...</dd>
+</dl>
+水平排列的描述
+.dl-horizontal可以让<dl>内短语及其描述排在一行。开始是像<dl>默认样式堆叠在一起，随着导航条逐渐展开而排列在一样。
+<dl class="dl-horizontal">
+  <dt>...</dt>
+  <dd>...</dd>
+</dl>
+自动截断
+通过text-overflow，水平排列的描述列表将会截断左侧太长的短语。在较窄的视口（viewport）内，列表将变为默认堆叠排列的布局方式。
+
+

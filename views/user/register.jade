@@ -1,0 +1,30 @@
+extends ../layout
+script(type='text/javascript', src='/scripts/validator/validator.js')
+script(type='text/javascript', src='/js/base.js')
+block content
+  form#form-box.container(role='form', method='post', action='register')
+    fieldset
+      // Form Name
+      legend Register
+      // Text input
+      .form-group
+        label(for='username') Username:
+        input#username.form-control(type='text', name='username', placeholder='用户昵称', required='')
+      .form-group
+        label(for='email') Email:
+        input#email.form-control(type='email', name='email', placeholder='邮箱地址', required='')
+      // Password input
+      .form-group
+        label(for='password') Password:
+        input#password.form-control(type='password', name='password', placeholder='用户密码', required='')
+      // Password input
+      .form-group
+        label(for='repassword') Repassword:
+        input#repassword.form-control(type='password', name='repassword', placeholder='确认密码', required='')
+      // Button
+      .form-group
+        label.control-label(for='singlebutton')
+        button#singlebutton.btn.btn-primary(name='singlebutton', type='submit') 注册
+        a(href='/login') 已有账号？登录
+
+

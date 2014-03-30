@@ -1,0 +1,26 @@
+{
+  "name": "nodedemo",
+  "main": "app.js",
+  "version": "1.0.0",
+  "homepage": "",
+  "authors": [
+    "ljc6qx@gmail.com"
+  ],
+  "keywords": [
+    ""
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/scripts",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "jquery": "~2.1.0",
+    "validator-js": "~3.5.0"
+  }
+}

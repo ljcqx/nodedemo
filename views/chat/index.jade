@@ -1,0 +1,8 @@
+extends ../layout
+block content
+  h1= title
+  p Welcome to #{name}<br/>
+  p 'user_id:'  #{user_id}
+  p 'username:'  #{username}
+
+    a(href='/friends/search') 搜索好友

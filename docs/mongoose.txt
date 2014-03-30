@@ -1,0 +1,126 @@
+generateSalt
+
+var Crypto = require('crypto')
+    , mongoose = require('mongoose');
+
+module.exports = mongoose.model('User', new mongoose.Schema({
+    username: {
+        type: String
+        , required: true
+        , index: { unique: true, sparse: true }
+        , set: toLower
+    },
+    email: {
+        type: String
+        , required: true
+        , index: { unique: true, sparse: true }
+        , set: toLower
+    },
+    salt: {
+        type: String
+        , set: generateSalt
+    },
+    password: {
+        type: String
+        , set: encodePassword
+    }
+}),'Users');
+
+function toLower(string) {
+    return string.toLowerCase();
+}
+
+function generateSalt() {
+    //return Math.round((new Date().valueOf() * Math.random())) + '';
+    Crypto.randomBytes('256', function(err, buf) {
+        if (err) throw err;
+        return buf;
+    });
+    // return Crypto.randomBytes('256'); // fails to
+}
+
+function encodePassword(password) {
+    return password;
+    // TODO: setter has no access to this.salt
+    //return Crypto.createHmac('sha512', salt).update(password).digest("base64");
+}
+
+function authenticate(plainPassword) {
+    return encodePassword(plainPassword) === this.password;
+}
+
+
+mongoose定义数据类型
+
+type:
+	String
+		trim: true
+        default: ''
+        index: true
+        enum:
+        lowercase: true
+        uppercase: true
+        match: /^a/ or /\.html$/
+	Number
+		max:
+		min:
+	Date
+		expires: 60*60*24 or 1.5h or 7d
+	Buffer
+	Boolean | Bool
+	Mixed
+	ObjectId | Oid
+		auto
+	Array
+index: true
+required: true
+
+
+var Schema = mongoose.Schema
+  , ObjectId = Schema.ObjectId;
+
+var BlogPost = new Schema({
+    author    : ObjectId
+  , title     : String
+  , body      : String
+  , date      : Date
+});
+
+var Comment = new Schema({
+    name  :  { type: String, default: 'hahaha' }
+  , age   :  { type: Number, min: 18, index: true }
+  , bio   :  { type: String, match: /[a-z]/ }
+  , date  :  { type: Date, default: Date.now }
+  , buff  :  Buffer
+});
+
+var ToySchema = new Schema;
+ToySchema.add({ name: 'string', color: 'string', price: 'number' });
+
+
+Schema.Types
+
+ //举例：
+    var ExampleSchema = new Schema({
+      name:String,
+      binary:Buffer,
+      living:Boolean,
+      updated:Date,
+      age:Number,
+      mixed:Schema.Types.Mixed, //该混合类型等同于nested
+      _id:Schema.Types.ObjectId,  //主键
+      _fk:Schema.Types.ObjectId,  //外键
+      array:[],
+      arrOfString:[String],
+      arrOfNumber:[Number],
+      arrOfDate:[Date],
+      arrOfBuffer:[Buffer],
+      arrOfBoolean:[Boolean],
+      arrOfMixed:[Schema.Types.Mixed],
+      arrOfObjectId:[Schema.Types.ObjectId]
+      nested:{
+        stuff:String,
+      }
+    });
+
+Schema不仅定义了文档结构和使用性能，还可以有扩展插件、实例方法、静态方法、复合索引、文档生命周期钩子

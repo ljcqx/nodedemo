@@ -1,0 +1,28 @@
+extends ../layout
+script(type='text/javascript', src='/scripts/validator/validator.js')
+script(type='text/javascript', src='/js/base.js')
+block content
+  form#form-box.container(role='form', method='post', action='/login')
+    fieldset
+      // Form Name
+      legend Login
+      // Text input
+      .form-group
+        label(for='email') Username:
+        input#textinput.form-control(type='email', name='email', placeholder='邮箱地址', required='')
+      // Password input
+      .form-group
+        label(for='password') Password:
+        input#password.form-control(type='password', name='password', placeholder='用户密码', required='')
+      // Multiple Checkboxes (inline)
+      .form-group
+        label(for='checkboxes')
+          label.checkbox.inline(for='checkboxes-0')
+            input#checkboxes-0(type='checkbox', name='checkboxes', value='记住密码')
+            | Remember me
+      // Button
+      .form-group
+        label.control-label(for='singlebutton')
+        button#singlebutton.btn.btn-primary(name='singlebutton', type='submit') 登录
+        a(href='/register') 还没有账号？
+

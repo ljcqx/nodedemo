@@ -1,0 +1,19 @@
+How can I emulate php's json_encode in javascript / node js using JSON.stringify?
+<?
+$foo['url'] = "http://example.com/note/that/the/slashes/get/backslashed";
+echo json_encode($foo);
+?>
+generates the following output:
+
+{"url":"http:\/\/example.com\/note\/that\/the\/slashes\/get\/backslashed"}
+Using node.js and the JSON.stringify function here:
+
+var foo = new Object();
+foo.url = "http://example.com/note/that/the/slashes/do/not/get/backslashed"
+console.log(JSON.stringify(foo));
+I observe this output instead:
+
+ {"url":"http://example.com/note/that/the/slashes/do/not/get/backslashed"}
+Do you know of a clean way to get JSON.stringify to behave the same way that PHP behaves?
+
+If it's only the slashes you can replace the / with \/ after the conversion.
